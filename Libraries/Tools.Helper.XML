@@ -1,0 +1,435 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Tools.Helper</name>
+    </assembly>
+    <members>
+        <member name="T:Tools.Helper.AppSettings">
+            <summary>
+            Stellt einfachen Zugriff auf die AppSettings der Konfigurations-Datei zur Verfügung.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.AppSettings.HasKey(System.String)">
+            <summary>
+            Überprüft ob der angegebene Wert vorhanden ist.
+            Dabei wird zusätzlich überprüft, ob auch ein Wert eingetragen wurde.
+            </summary>
+            <param name="key">Name des zu überprüfenden Wertes.</param>
+        </member>
+        <member name="M:Tools.Helper.AppSettings.ReadByte(System.String,System.Byte)">
+            <summary>
+            Liest einen Byte-Wert aus.
+            Falls der Wer nicht konvertiert werden kann, oder nicht vorhanden ist, wird der Alternative-Wert zurückgeliefert.
+            </summary>
+            <param name="key">Schlüssel des auszulesenden Wertes.</param>
+            <param name="fallbackValue">Alternativer Wert der zurückgegeben wird, falls der Wert nicht gefunden oder gelesen werden konnte.</param>
+        </member>
+        <member name="M:Tools.Helper.AppSettings.ReadBool(System.String,System.Boolean)">
+            <summary>
+            Liest einen Bool-Wert aus.
+            Falls der Wer nicht konvertiert werden kann, oder nicht vorhanden ist, wird der Alternative-Wert zurückgeliefert.
+            </summary>
+            <param name="key">Schlüssel des auszulesenden Wertes.</param>
+            <param name="fallbackValue">Alternativer Wert der zurückgegeben wird, falls der Wert nicht gefunden oder gelesen werden konnte.</param>
+        </member>
+        <member name="M:Tools.Helper.AppSettings.ReadInt(System.String,System.Int32)">
+            <summary>
+            Liest eine Int-Wert aus.
+            Falls der Wer nicht konvertiert werden kann, oder nicht vorhanden ist, wird der Alternative-Wert zurückgeliefert.
+            </summary>
+            <param name="key">Schlüssel des auszulesenden Wertes.</param>
+            <param name="fallbackValue">Alternativer Wert der zurückgegeben wird, falls der Wert nicht gefunden oder gelesen werden konnte.</param>
+        </member>
+        <member name="M:Tools.Helper.AppSettings.ReadLong(System.String,System.Int64)">
+            <summary>
+            Liest eine Long-Wert aus.
+            Falls der Wer nicht konvertiert werden kann, oder nicht vorhanden ist, wird der Alternative-Wert zurückgeliefert.
+            </summary>
+            <param name="key">Schlüssel des auszulesenden Wertes.</param>
+            <param name="fallbackValue">Alternativer Wert der zurückgegeben wird, falls der Wert nicht gefunden oder gelesen werden konnte.</param>
+        </member>
+        <member name="M:Tools.Helper.AppSettings.ReadDouble(System.String,System.Double)">
+            <summary>
+            Liest eine Double-Wert aus.
+            Falls der Wer nicht konvertiert werden kann, oder nicht vorhanden ist, wird der Alternative-Wert zurückgeliefert.
+            </summary>
+            <param name="key">Schlüssel des auszulesenden Wertes.</param>
+            <param name="fallbackValue">Alternativer Wert der zurückgegeben wird, falls der Wert nicht gefunden oder gelesen werden konnte.</param>
+        </member>
+        <member name="M:Tools.Helper.AppSettings.ReadFloat(System.String,System.Single)">
+            <summary>
+            Liest eine Float-Wert aus.
+            Falls der Wer nicht konvertiert werden kann, oder nicht vorhanden ist, wird der Alternative-Wert zurückgeliefert.
+            </summary>
+            <param name="key">Schlüssel des auszulesenden Wertes.</param>
+            <param name="fallbackValue">Alternativer Wert der zurückgegeben wird, falls der Wert nicht gefunden oder gelesen werden konnte.</param>
+        </member>
+        <member name="M:Tools.Helper.AppSettings.ReadString(System.String,System.String)">
+            <summary>
+            Liest eine String-Wert aus.
+            Falls der Wer nicht konvertiert werden kann, oder nicht vorhanden ist, wird der Alternative-Wert zurückgeliefert.
+            </summary>
+            <param name="key">Schlüssel des auszulesenden Wertes.</param>
+            <param name="fallbackValue">Alternativer Wert der zurückgegeben wird, falls der Wert nicht gefunden oder gelesen werden konnte.</param>
+        </member>
+        <member name="M:Tools.Helper.ArrayHelper.Sum(System.Int32[])">
+            <summary>
+            Berechnet die Quersumme.
+            </summary>
+        </member>
+        <member name="T:Tools.Helper.CompressHelper">
+            <summary>
+            Stellt Hilfsmethoden zum komprimieren- /dekomprimieren zur Verfügung.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.CompressHelper.GZIPCompress(System.Byte[])">
+            <summary>
+            Komprimiert ein Array mit den GZIP-Algorithmus.
+            </summary>
+            <param name="data">Array das komprimiert werden soll.</param>
+        </member>
+        <member name="M:Tools.Helper.CompressHelper.GZIPDecompress(System.Byte[])">
+            <summary>
+            Dekomprimiert ein zuvor mit den GZIP-Algorithmus komprimiertes Array.
+            </summary>
+            <param name="compressedData">Array das die zuvor komprimierten Daten enthält.</param>
+        </member>
+        <member name="T:Tools.Helper.SimpleConsole">
+            <summary>
+            Stellt eine vereinfachte Ausgabe auf der Konsole dar.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.SimpleConsole.#ctor">
+            <summary>
+            Stellt eine vereinfachte Ausgabe auf der Konsole dar.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.SimpleConsole.Reset">
+            <summary>
+            Setzt alle Einstellungen zurück.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.SimpleConsole.EndLine">
+            <summary>
+            Schreibt ein Zeilenumbruch.
+            </summary>
+        </member>
+        <member name="T:Tools.Helper.EncodingHelper">
+            <summary>
+            Liefert Hilfsmethoden zum encodieren und dekodieren von Zeichenketten.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.EncodingHelper.EncodeBase64(System.Byte[],System.String)">
+            <summary>
+            Kodiert eine Zeichenfolge zu Base64.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.EncodingHelper.EncodeBase64(System.String,System.String)">
+            <summary>
+            Kodiert eine Byte-Array zu eine Base64 Zeichenfolge.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.EncodingHelper.DecodeBase64(System.Byte[],System.String)">
+            <summary>
+            Dekodiert eine Base64 kodierte Zeichenfolge.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.EncodingHelper.DecodeBase64(System.String,System.String)">
+            <summary>
+            Dekodiert ein Base64 kodiertes Byte-Array.
+            </summary>
+        </member>
+        <member name="T:Tools.Helper.HashHelper">
+            <summary>
+            Stellt Methoden zum erstellen von Hashwerten zur Verfügung.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.HashHelper.ToMD5(System.String)">
+            <summary>
+            Erstellt einen MD5-Hash.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.HashHelper.ToMD5(System.Byte[])">
+            <summary>
+            Erstellt einen MD5-Hash.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.HashHelper.ToSHA1(System.String)">
+            <summary>
+            Erstellt einen SHA1-Hash.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.HashHelper.ToSHA1(System.Byte[])">
+            <summary>
+            Erstellt einen SHA1-Hash.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.HashHelper.ToCRC32(System.String)">
+            <summary>
+            Erstellt einen CRC32-Hash.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.HashHelper.ToCRC32(System.Byte[])">
+            <summary>
+            Erstellt einen CRC32-Hash.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.Hashing.CRC16.#ctor">
+            <summary>Creates a CRC16 object using the <see cref="F:Tools.Helper.Hashing.CRC16.DefaultPolynomial"/>.</summary>
+        </member>
+        <member name="M:Tools.Helper.Hashing.CRC16.#ctor(System.UInt16)">
+            <summary>Creates a CRC16 object using the specified polynomial.</summary>
+        </member>
+        <member name="F:Tools.Helper.Hashing.CRC16.DefaultPolynomial">
+            <summary>Gets the default polynomial.</summary>
+        </member>
+        <member name="M:Tools.Helper.Hashing.CRC16.Initialize">
+            <summary>Initializes an implementation of HashAlgorithm.</summary>
+        </member>
+        <member name="M:Tools.Helper.Hashing.CRC16.HashCore(System.Byte[],System.Int32,System.Int32)">
+            <summary>Routes data written to the object into the hash algorithm for computing the hash.</summary>
+        </member>
+        <member name="M:Tools.Helper.Hashing.CRC16.HashFinal">
+            <summary>Finalizes the hash computation after the last data is processed by the cryptographic stream object.</summary>
+        </member>
+        <member name="M:Tools.Helper.Hashing.CRC16.Compute(System.String)">
+            <summary>Computes the CRC16 value for the given ASCII string using the <see cref="F:Tools.Helper.Hashing.CRC16.DefaultPolynomial"/>.</summary>
+        </member>
+        <member name="M:Tools.Helper.Hashing.CRC16.Compute(System.IO.Stream)">
+            <summary>Computes the CRC16 value for the given input stream using the <see cref="F:Tools.Helper.Hashing.CRC16.DefaultPolynomial"/>.</summary>
+        </member>
+        <member name="M:Tools.Helper.Hashing.CRC16.Compute(System.Byte[])">
+            <summary>Computes the CRC16 value for the input data using the <see cref="F:Tools.Helper.Hashing.CRC16.DefaultPolynomial"/>.</summary>
+        </member>
+        <member name="M:Tools.Helper.Hashing.CRC16.Compute(System.Byte[],System.Int32,System.Int32)">
+            <summary>Computes the hash value for the input data using the <see cref="F:Tools.Helper.Hashing.CRC16.DefaultPolynomial"/>.</summary>
+        </member>
+        <member name="M:Tools.Helper.Hashing.CRC16.ComputeHash(System.String)">
+            <summary>Computes the hash value for the given ASCII string.</summary>
+            <remarks>The computation preserves the internal state between the calls, so it can be used for computation of a stream data.</remarks>
+        </member>
+        <member name="M:Tools.Helper.Hashing.CRC16.ComputeHash(System.IO.Stream)">
+            <summary>Computes the hash value for the given input stream.</summary>
+            <remarks>The computation preserves the internal state between the calls, so it can be used for computation of a stream data.</remarks>
+        </member>
+        <member name="M:Tools.Helper.Hashing.CRC16.ComputeHash(System.Byte[])">
+            <summary>Computes the hash value for the input data.</summary>
+            <remarks>The computation preserves the internal state between the calls, so it can be used for computation of a stream data.</remarks>
+        </member>
+        <member name="M:Tools.Helper.Hashing.CRC16.ComputeHash(System.Byte[],System.Int32,System.Int32)">
+            <summary>Computes the hash value for the input data.</summary>
+            <remarks>The computation preserves the internal state between the calls, so it can be used for computation of a stream data.</remarks>
+        </member>
+        <member name="T:Tools.Helper.MathHelper">
+            <summary>
+            Stellt mathematische Hilfsmethoden zur Verfügung.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.MathHelper.Clamp(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Überprüft ob der Wert zwischen min und max liegt und passt diesen ggf. an.
+            </summary>
+            <param name="value">Wert der überprüft werden soll.</param>
+            <param name="min">Kleinst möglicher Wert.</param>
+            <param name="max">Größt möglichster Wert.</param>
+        </member>
+        <member name="M:Tools.Helper.MathHelper.Clamp(System.Single,System.Single,System.Single)">
+            <summary>
+            Überprüft ob der Wert zwischen min und max liegt und passt diesen ggf. an.
+            </summary>
+            <param name="value">Wert der überprüft werden soll.</param>
+            <param name="min">Kleinst möglicher Wert.</param>
+            <param name="max">Größt möglichster Wert.</param>
+        </member>
+        <member name="M:Tools.Helper.MathHelper.Clamp(System.Double,System.Double,System.Double)">
+            <summary>
+            Überprüft ob der Wert zwischen min und max liegt und passt diesen ggf. an.
+            </summary>
+            <param name="value">Wert der überprüft werden soll.</param>
+            <param name="min">Kleinst möglicher Wert.</param>
+            <param name="max">Größt möglichster Wert.</param>
+        </member>
+        <member name="M:Tools.Helper.MathHelper.Min(System.Int32,System.Int32)">
+            <summary>
+            Gibt den kleineren Wert zurück.
+            </summary>
+            <param name="a">Erster Wert</param>
+            <param name="b">Zweiter Wert</param>
+        </member>
+        <member name="M:Tools.Helper.MathHelper.Max(System.Int32,System.Int32)">
+            <summary>
+            Gibt den größeren Wert zurück.
+            </summary>
+            <param name="a">Erster Wert</param>
+            <param name="b">Zweiter Wert</param>
+        </member>
+        <member name="M:Tools.Helper.MathHelper.Min(System.Single,System.Single)">
+            <summary>
+            Gibt den kleineren Wert zurück.
+            </summary>
+            <param name="a">Erster Wert</param>
+            <param name="b">Zweiter Wert</param>
+        </member>
+        <member name="M:Tools.Helper.MathHelper.Max(System.Single,System.Single)">
+            <summary>
+            Gibt den größeren Wert zurück.
+            </summary>
+            <param name="a">Erster Wert</param>
+            <param name="b">Zweiter Wert</param>
+        </member>
+        <member name="M:Tools.Helper.MathHelper.Min(System.Double,System.Double)">
+            <summary>
+            Gibt den kleineren Wert zurück.
+            </summary>
+            <param name="a">Erster Wert</param>
+            <param name="b">Zweiter Wert</param>
+        </member>
+        <member name="M:Tools.Helper.MathHelper.Max(System.Double,System.Double)">
+            <summary>
+            Gibt den größeren Wert zurück.
+            </summary>
+            <param name="a">Erster Wert</param>
+            <param name="b">Zweiter Wert</param>
+        </member>
+        <member name="M:Tools.Helper.MathHelper.FindCombinations(System.Int32,System.Int32)">
+            <summary>
+            Berechnet alle möglichen Kombinationen, mit denen die angegebenen Punkte im Array verteilt werden können.
+            </summary>
+            <param name="arrayLength">Größe des Arrays</param>
+            <param name="points">Die Anzahl an Punkte, die verteilt werden sollen.</param>
+        </member>
+        <member name="T:Tools.Helper.SingletonFactory">
+            <summary>
+            Dient zur Verwaltung von Instanzen anhand des Singleton Patterns.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.SingletonFactory.GetInstance``1">
+            <summary>
+            Liefert eine Instanz vom Typ TInstance zurück.
+            Falls noch keine Instanz erstellt wurde, wird automatisch eine neue erzeugt.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.SingletonFactory.RemoveInstance``1">
+            <summary>
+            Entfernt die angegebene Instanz.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.SingletonFactory.ClearInstances">
+            <summary>
+            Entfernt alle hinzugefügten Instanzen.
+            </summary>
+        </member>
+        <member name="T:Tools.Helper.StringHelper">
+            <summary>
+            Stellt Hilfsmethoden für Zeichenketten-Operationen bereit.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.StringHelper.SplitString(System.String,System.Char,System.Boolean,System.Boolean)">
+            <summary>
+            Zerlegt eine Zeichenkette anhand eines Trennzeichens.
+            </summary>
+            <param name="value">Zeichenkette die zerlegt werden soll.</param>
+            <param name="separator">Trennzeichen anhand dessen die Zeichenkette zerlegt wird.</param>
+            <param name="trim">Falls gesetzt, werden alle Leerzeichen am Anfang und am Ende von jeden Wert entfernt.</param>
+            <param name="removeEmptyElements">Falls gesetzt, werden Werte die nur aus Leerzeichen bestehen oder leer sind entfernt.</param>
+        </member>
+        <member name="M:Tools.Helper.StringHelper.Parse``1(System.String,``0)">
+            <summary>
+            Versucht einen Wert zu parsen.
+            </summary>
+            <typeparam name="T">Typ des Wertes der geparsed werden soll.</typeparam>
+            <param name="value">Wert der geparsed werden soll.</param>
+            <param name="fallbackValue">Ein alternativer Wert, der zurückgegeben wird, falls das parsen fehlschlägt.</param>
+        </member>
+        <member name="M:Tools.Helper.StringHelper.ParseBool(System.Object,System.Boolean)">
+            <summary>
+            Konvertiert eine Zeichenkette zu einen Boolean.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.StringHelper.ParseByte(System.Object,System.Byte)">
+            <summary>
+            Konvertiert eine Zeichenkette zu ein Byte.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.StringHelper.ParseShort(System.Object,System.Int16)">
+            <summary>
+            Konvertiert eine Zeichenkette zu einen Short.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.StringHelper.ParseInt(System.Object,System.Int32)">
+            <summary>
+            Konvertiert eine Zeichenkette zu einen Integer.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.StringHelper.ParseLong(System.Object,System.Int64)">
+            <summary>
+            Konvertiert eine Zeichenkette zu einen Long.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.StringHelper.ParseFloat(System.Object,System.Single)">
+            <summary>
+            Konvertiert eine Zeichenkette zu einen Float.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.StringHelper.ParseDouble(System.Object,System.Double)">
+            <summary>
+            Konvertiert eine Zeichenkette zu einen Double.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.StringHelper.ParseDecimal(System.Object,System.Decimal)">
+            <summary>
+            Konvertiert eine Zeichenkette zu einen Decimal.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.StringHelper.IsBool(System.String)">
+            <summary>
+            Überprüft ob der Wert zu einen Boolean konvertiert werden kann.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.StringHelper.IsByte(System.String)">
+            <summary>
+            Überprüft ob der Wert zu einen Byte konvertiert werden kann.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.StringHelper.IsShort(System.String)">
+            <summary>
+            Überprüft ob der Wert zu einen Short konvertiert werden kann.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.StringHelper.IsInt(System.String)">
+            <summary>
+            Überprüft ob der Wert zu einen Integer konvertiert werden kann.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.StringHelper.IsLong(System.String)">
+            <summary>
+            Überprüft ob der Wert zu einen Long konvertiert werden kann.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.StringHelper.IsFloat(System.String)">
+            <summary>
+            Überprüft ob der Wert zu einen Float konvertiert werden kann.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.StringHelper.IsDouble(System.String)">
+            <summary>
+            Überprüft ob der Wert zu einen Double konvertiert werden kann.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.StringHelper.IsDecimal(System.String)">
+            <summary>
+            Überprüft ob der Wert zu einen Decimal konvertiert werden kann.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.StringHelper.IfNull(System.String,System.String)">
+            <summary>
+            Liefert den Wert in fallbackValue falls value null ist.
+            </summary>
+        </member>
+        <member name="M:Tools.Helper.StringHelper.IfEmpty(System.String,System.String)">
+            <summary>
+            Liefert den Wert in fallbackValue falls value keine Zeichen enthält.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,21 @@
+﻿This is the file format for the binary export TXF-Format:
+
+char[2]    'T', 'F'  (magic string, TextureFont file)
+byte[1]    Version (current version = 1)
+
+bool       Image is compressed? (1 = yes, 0 = no)
+int        Length of image data
+byte[]     Image data (image format = PNG)
+
+char       First character
+int        Amounf of characters
+
+For each character (pixel pos/size):
+ushort    x position on image
+ushort    y position on image
+byte      width of character
+byte      height of character
+
+
+All data types are C# data types.
+You can find the specification under https://msdn.microsoft.com/en-us/library/cs7y5x0x%28v=vs.90%29.aspx
