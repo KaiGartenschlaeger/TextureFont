@@ -60,7 +60,7 @@ namespace TextureFontGenerator
             cbxWhitespaceMode.SelectedIndex = 0;
             nudWhitespacePercent.Enabled = cbxWhitespaceMode.SelectedIndex > 0;
 
-            nudOutline.Enabled = chbOutline.Checked;
+            OutlineModeChanged();
 
             RefreshSaveElement();
         }
@@ -76,7 +76,14 @@ namespace TextureFontGenerator
 
         private void chbOutline_CheckedChanged(object sender, EventArgs e)
         {
+            OutlineModeChanged();
+        }
+
+        private void OutlineModeChanged()
+        {
             nudOutline.Enabled = chbOutline.Checked;
+            chbAntiAlias.Enabled = !chbOutline.Checked;
+            chbShadow.Enabled = !chbOutline.Checked;
         }
 
         private void ConfigureGraphics(Graphics graphics)
