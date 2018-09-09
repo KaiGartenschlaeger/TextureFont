@@ -33,6 +33,7 @@
             this.cbxFont = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.chbItalic = new System.Windows.Forms.CheckBox();
             this.chbBold = new System.Windows.Forms.CheckBox();
             this.nudOutline = new System.Windows.Forms.NumericUpDown();
             this.chbOutline = new System.Windows.Forms.CheckBox();
@@ -42,7 +43,7 @@
             this.cbxWhitespaceMode = new System.Windows.Forms.ComboBox();
             this.chbPremultipliedAlpha = new System.Windows.Forms.CheckBox();
             this.btnInfo = new System.Windows.Forms.Button();
-            this.panel5 = new System.Windows.Forms.Panel();
+            this.panBackgroundColorImage = new System.Windows.Forms.Panel();
             this.panBackColorImage = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.chbCompressImage = new System.Windows.Forms.CheckBox();
@@ -65,23 +66,22 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tbxMaxChar = new System.Windows.Forms.TextBox();
             this.tbxMinChar = new System.Windows.Forms.TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.panBackgroundColorBack = new System.Windows.Forms.Panel();
             this.panBackgroundColor = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pbxPreview = new System.Windows.Forms.PictureBox();
-            this.chbItalic = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudOutline)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWhitespacePercent)).BeginInit();
-            this.panel5.SuspendLayout();
+            this.panBackgroundColorImage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudImageWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPadding)).BeginInit();
             this.panel6.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudSize)).BeginInit();
-            this.panel2.SuspendLayout();
+            this.panBackgroundColorBack.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPreview)).BeginInit();
             this.SuspendLayout();
@@ -142,7 +142,7 @@
             this.panel1.Controls.Add(this.cbxWhitespaceMode);
             this.panel1.Controls.Add(this.chbPremultipliedAlpha);
             this.panel1.Controls.Add(this.btnInfo);
-            this.panel1.Controls.Add(this.panel5);
+            this.panel1.Controls.Add(this.panBackgroundColorImage);
             this.panel1.Controls.Add(this.chbCompressImage);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.nudImageWidth);
@@ -159,7 +159,7 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.tbxMaxChar);
             this.panel1.Controls.Add(this.tbxMinChar);
-            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.panBackgroundColorBack);
             this.panel1.Controls.Add(this.cbxFont);
             this.panel1.Controls.Add(this.btnRefresh);
             this.panel1.Location = new System.Drawing.Point(9, 9);
@@ -167,6 +167,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(251, 584);
             this.panel1.TabIndex = 0;
+            // 
+            // chbItalic
+            // 
+            this.chbItalic.AutoSize = true;
+            this.chbItalic.Location = new System.Drawing.Point(53, 39);
+            this.chbItalic.Name = "chbItalic";
+            this.chbItalic.Size = new System.Drawing.Size(48, 17);
+            this.chbItalic.TabIndex = 1;
+            this.chbItalic.Text = "Italic";
+            this.chbItalic.UseVisualStyleBackColor = true;
             // 
             // chbBold
             // 
@@ -288,21 +298,20 @@
             this.btnInfo.UseVisualStyleBackColor = true;
             this.btnInfo.Click += new System.EventHandler(this.btnInfo_Click);
             // 
-            // panel5
+            // panBackgroundColorImage
             // 
-            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.panBackgroundColorImage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel5.Controls.Add(this.panBackColorImage);
-            this.panel5.Controls.Add(this.label7);
-            this.panel5.Location = new System.Drawing.Point(0, 305);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(251, 23);
-            this.panel5.TabIndex = 7;
+            this.panBackgroundColorImage.Controls.Add(this.panBackColorImage);
+            this.panBackgroundColorImage.Controls.Add(this.label7);
+            this.panBackgroundColorImage.Location = new System.Drawing.Point(0, 305);
+            this.panBackgroundColorImage.Name = "panBackgroundColorImage";
+            this.panBackgroundColorImage.Size = new System.Drawing.Size(251, 23);
+            this.panBackgroundColorImage.TabIndex = 7;
             // 
             // panBackColorImage
             // 
             this.panBackColorImage.BackColor = System.Drawing.Color.Magenta;
-            this.panBackColorImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panBackColorImage.Cursor = System.Windows.Forms.Cursors.Hand;
             this.panBackColorImage.Dock = System.Windows.Forms.DockStyle.Left;
             this.panBackColorImage.Location = new System.Drawing.Point(0, 0);
@@ -380,6 +389,7 @@
             this.chbBackgroundTransparent.TabIndex = 3;
             this.chbBackgroundTransparent.Text = "Transparent";
             this.chbBackgroundTransparent.UseVisualStyleBackColor = true;
+            this.chbBackgroundTransparent.CheckedChanged += new System.EventHandler(this.chbBackgroundTransparent_CheckedChanged);
             // 
             // chbAntiAlias
             // 
@@ -462,7 +472,6 @@
             // panShadowColor
             // 
             this.panShadowColor.BackColor = System.Drawing.Color.Black;
-            this.panShadowColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panShadowColor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.panShadowColor.Dock = System.Windows.Forms.DockStyle.Left;
             this.panShadowColor.Location = new System.Drawing.Point(0, 0);
@@ -496,7 +505,6 @@
             // panTextColor
             // 
             this.panTextColor.BackColor = System.Drawing.Color.White;
-            this.panTextColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panTextColor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.panTextColor.Dock = System.Windows.Forms.DockStyle.Left;
             this.panTextColor.Location = new System.Drawing.Point(0, 0);
@@ -566,21 +574,20 @@
             this.tbxMinChar.TabIndex = 3;
             this.tbxMinChar.Text = "32";
             // 
-            // panel2
+            // panBackgroundColorBack
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.panBackgroundColorBack.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Controls.Add(this.panBackgroundColor);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Location = new System.Drawing.Point(0, 280);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(251, 23);
-            this.panel2.TabIndex = 2;
+            this.panBackgroundColorBack.Controls.Add(this.panBackgroundColor);
+            this.panBackgroundColorBack.Controls.Add(this.label1);
+            this.panBackgroundColorBack.Location = new System.Drawing.Point(0, 280);
+            this.panBackgroundColorBack.Name = "panBackgroundColorBack";
+            this.panBackgroundColorBack.Size = new System.Drawing.Size(251, 23);
+            this.panBackgroundColorBack.TabIndex = 2;
             // 
             // panBackgroundColor
             // 
             this.panBackgroundColor.BackColor = System.Drawing.Color.Magenta;
-            this.panBackgroundColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panBackgroundColor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.panBackgroundColor.Dock = System.Windows.Forms.DockStyle.Left;
             this.panBackgroundColor.Location = new System.Drawing.Point(0, 0);
@@ -624,16 +631,6 @@
             this.pbxPreview.TabIndex = 0;
             this.pbxPreview.TabStop = false;
             // 
-            // chbItalic
-            // 
-            this.chbItalic.AutoSize = true;
-            this.chbItalic.Location = new System.Drawing.Point(53, 39);
-            this.chbItalic.Name = "chbItalic";
-            this.chbItalic.Size = new System.Drawing.Size(48, 17);
-            this.chbItalic.TabIndex = 1;
-            this.chbItalic.Text = "Italic";
-            this.chbItalic.UseVisualStyleBackColor = true;
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -652,13 +649,13 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudOutline)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWhitespacePercent)).EndInit();
-            this.panel5.ResumeLayout(false);
+            this.panBackgroundColorImage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.nudImageWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPadding)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.nudSize)).EndInit();
-            this.panel2.ResumeLayout(false);
+            this.panBackgroundColorBack.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPreview)).EndInit();
@@ -672,7 +669,7 @@
         private System.Windows.Forms.ComboBox cbxFont;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panBackgroundColorBack;
         private System.Windows.Forms.Panel panBackgroundColor;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel3;
@@ -693,7 +690,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.NumericUpDown nudImageWidth;
         private System.Windows.Forms.CheckBox chbCompressImage;
-        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panBackgroundColorImage;
         private System.Windows.Forms.Panel panBackColorImage;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnInfo;

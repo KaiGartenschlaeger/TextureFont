@@ -61,6 +61,7 @@ namespace TextureFontGenerator
             nudWhitespacePercent.Enabled = cbxWhitespaceMode.SelectedIndex > 0;
 
             OutlineModeChanged();
+            TransparentModeChanged();
 
             RefreshSaveElement();
         }
@@ -77,6 +78,19 @@ namespace TextureFontGenerator
         private void chbOutline_CheckedChanged(object sender, EventArgs e)
         {
             OutlineModeChanged();
+        }
+
+        private void chbBackgroundTransparent_CheckedChanged(object sender, EventArgs e)
+        {
+            TransparentModeChanged();
+        }
+
+        private void TransparentModeChanged()
+        {
+            panBackgroundColor.Visible = !chbBackgroundTransparent.Checked;
+            panBackColorImage.Visible = !chbBackgroundTransparent.Checked;
+            panBackgroundColorBack.Enabled = !chbBackgroundTransparent.Checked;
+            panBackgroundColorImage.Enabled = !chbBackgroundTransparent.Checked;
         }
 
         private void OutlineModeChanged()
