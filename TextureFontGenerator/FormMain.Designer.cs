@@ -33,6 +33,10 @@
             this.cbxFont = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.chbBold = new System.Windows.Forms.CheckBox();
+            this.nudOutline = new System.Windows.Forms.NumericUpDown();
+            this.chbOutline = new System.Windows.Forms.CheckBox();
+            this.chbShadow = new System.Windows.Forms.CheckBox();
             this.nudWhitespacePercent = new System.Windows.Forms.NumericUpDown();
             this.chbTrimCharWidth = new System.Windows.Forms.CheckBox();
             this.cbxWhitespaceMode = new System.Windows.Forms.ComboBox();
@@ -51,6 +55,9 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.nudPadding = new System.Windows.Forms.NumericUpDown();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panShadowColor = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panTextColor = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -63,28 +70,26 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pbxPreview = new System.Windows.Forms.PictureBox();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.panShadowColor = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.chbShadow = new System.Windows.Forms.CheckBox();
+            this.chbItalic = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudOutline)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWhitespacePercent)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudImageWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPadding)).BeginInit();
+            this.panel6.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudSize)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPreview)).BeginInit();
-            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnRefresh
             // 
             this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRefresh.Location = new System.Drawing.Point(150, 308);
+            this.btnRefresh.Location = new System.Drawing.Point(160, 380);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(80, 28);
             this.btnRefresh.TabIndex = 0;
@@ -101,7 +106,7 @@
             this.cbxFont.FormattingEnabled = true;
             this.cbxFont.Location = new System.Drawing.Point(0, 16);
             this.cbxFont.Name = "cbxFont";
-            this.cbxFont.Size = new System.Drawing.Size(179, 21);
+            this.cbxFont.Size = new System.Drawing.Size(189, 21);
             this.cbxFont.Sorted = true;
             this.cbxFont.TabIndex = 1;
             // 
@@ -118,7 +123,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(774, 551);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(806, 602);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // panel1
@@ -127,6 +132,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.chbItalic);
+            this.panel1.Controls.Add(this.chbBold);
+            this.panel1.Controls.Add(this.nudOutline);
+            this.panel1.Controls.Add(this.chbOutline);
             this.panel1.Controls.Add(this.chbShadow);
             this.panel1.Controls.Add(this.nudWhitespacePercent);
             this.panel1.Controls.Add(this.chbTrimCharWidth);
@@ -156,13 +165,62 @@
             this.panel1.Location = new System.Drawing.Point(9, 9);
             this.panel1.Margin = new System.Windows.Forms.Padding(8);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(241, 533);
+            this.panel1.Size = new System.Drawing.Size(251, 584);
             this.panel1.TabIndex = 0;
+            // 
+            // chbBold
+            // 
+            this.chbBold.AutoSize = true;
+            this.chbBold.Location = new System.Drawing.Point(0, 39);
+            this.chbBold.Name = "chbBold";
+            this.chbBold.Size = new System.Drawing.Size(47, 17);
+            this.chbBold.TabIndex = 1;
+            this.chbBold.Text = "Bold";
+            this.chbBold.UseVisualStyleBackColor = true;
+            // 
+            // nudOutline
+            // 
+            this.nudOutline.DecimalPlaces = 2;
+            this.nudOutline.Location = new System.Drawing.Point(0, 252);
+            this.nudOutline.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.nudOutline.Name = "nudOutline";
+            this.nudOutline.Size = new System.Drawing.Size(173, 20);
+            this.nudOutline.TabIndex = 10;
+            this.nudOutline.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            // 
+            // chbOutline
+            // 
+            this.chbOutline.AutoSize = true;
+            this.chbOutline.Location = new System.Drawing.Point(0, 235);
+            this.chbOutline.Name = "chbOutline";
+            this.chbOutline.Size = new System.Drawing.Size(59, 17);
+            this.chbOutline.TabIndex = 9;
+            this.chbOutline.Text = "Outline";
+            this.chbOutline.UseVisualStyleBackColor = true;
+            this.chbOutline.CheckedChanged += new System.EventHandler(this.chbOutline_CheckedChanged);
+            // 
+            // chbShadow
+            // 
+            this.chbShadow.AutoSize = true;
+            this.chbShadow.Location = new System.Drawing.Point(0, 368);
+            this.chbShadow.Name = "chbShadow";
+            this.chbShadow.Size = new System.Drawing.Size(65, 17);
+            this.chbShadow.TabIndex = 1;
+            this.chbShadow.Text = "Shadow";
+            this.chbShadow.UseVisualStyleBackColor = true;
             // 
             // nudWhitespacePercent
             // 
             this.nudWhitespacePercent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.nudWhitespacePercent.Location = new System.Drawing.Point(183, 60);
+            this.nudWhitespacePercent.Location = new System.Drawing.Point(193, 88);
             this.nudWhitespacePercent.Minimum = new decimal(new int[] {
             10,
             0,
@@ -182,7 +240,7 @@
             this.chbTrimCharWidth.AutoSize = true;
             this.chbTrimCharWidth.Checked = true;
             this.chbTrimCharWidth.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbTrimCharWidth.Location = new System.Drawing.Point(0, 184);
+            this.chbTrimCharWidth.Location = new System.Drawing.Point(0, 212);
             this.chbTrimCharWidth.Name = "chbTrimCharWidth";
             this.chbTrimCharWidth.Size = new System.Drawing.Size(122, 17);
             this.chbTrimCharWidth.TabIndex = 3;
@@ -199,9 +257,9 @@
             "Original",
             "Avarage character width",
             "Max character width"});
-            this.cbxWhitespaceMode.Location = new System.Drawing.Point(0, 59);
+            this.cbxWhitespaceMode.Location = new System.Drawing.Point(0, 87);
             this.cbxWhitespaceMode.Name = "cbxWhitespaceMode";
-            this.cbxWhitespaceMode.Size = new System.Drawing.Size(179, 21);
+            this.cbxWhitespaceMode.Size = new System.Drawing.Size(189, 21);
             this.cbxWhitespaceMode.TabIndex = 1;
             this.cbxWhitespaceMode.SelectedIndexChanged += new System.EventHandler(this.cbxWhitespaceMode_SelectedIndexChanged);
             // 
@@ -212,9 +270,9 @@
             this.chbPremultipliedAlpha.AutoEllipsis = true;
             this.chbPremultipliedAlpha.Checked = true;
             this.chbPremultipliedAlpha.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbPremultipliedAlpha.Location = new System.Drawing.Point(0, 342);
+            this.chbPremultipliedAlpha.Location = new System.Drawing.Point(0, 414);
             this.chbPremultipliedAlpha.Name = "chbPremultipliedAlpha";
-            this.chbPremultipliedAlpha.Size = new System.Drawing.Size(138, 17);
+            this.chbPremultipliedAlpha.Size = new System.Drawing.Size(148, 17);
             this.chbPremultipliedAlpha.TabIndex = 8;
             this.chbPremultipliedAlpha.Text = "Premultiplied alpha";
             this.chbPremultipliedAlpha.UseVisualStyleBackColor = true;
@@ -222,9 +280,9 @@
             // btnInfo
             // 
             this.btnInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnInfo.Location = new System.Drawing.Point(0, 505);
+            this.btnInfo.Location = new System.Drawing.Point(0, 556);
             this.btnInfo.Name = "btnInfo";
-            this.btnInfo.Size = new System.Drawing.Size(241, 28);
+            this.btnInfo.Size = new System.Drawing.Size(251, 28);
             this.btnInfo.TabIndex = 1;
             this.btnInfo.Text = "Info";
             this.btnInfo.UseVisualStyleBackColor = true;
@@ -236,9 +294,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel5.Controls.Add(this.panBackColorImage);
             this.panel5.Controls.Add(this.label7);
-            this.panel5.Location = new System.Drawing.Point(0, 233);
+            this.panel5.Location = new System.Drawing.Point(0, 305);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(241, 23);
+            this.panel5.Size = new System.Drawing.Size(251, 23);
             this.panel5.TabIndex = 7;
             // 
             // panBackColorImage
@@ -259,7 +317,7 @@
             this.label7.AutoEllipsis = true;
             this.label7.Location = new System.Drawing.Point(59, 5);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(179, 13);
+            this.label7.Size = new System.Drawing.Size(189, 13);
             this.label7.TabIndex = 0;
             this.label7.Text = "Background color image";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -271,9 +329,9 @@
             this.chbCompressImage.AutoEllipsis = true;
             this.chbCompressImage.Checked = true;
             this.chbCompressImage.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbCompressImage.Location = new System.Drawing.Point(0, 324);
+            this.chbCompressImage.Location = new System.Drawing.Point(0, 396);
             this.chbCompressImage.Name = "chbCompressImage";
-            this.chbCompressImage.Size = new System.Drawing.Size(144, 17);
+            this.chbCompressImage.Size = new System.Drawing.Size(154, 17);
             this.chbCompressImage.TabIndex = 1;
             this.chbCompressImage.Text = "Compress image";
             this.chbCompressImage.UseVisualStyleBackColor = true;
@@ -282,7 +340,7 @@
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(147, 263);
+            this.label6.Location = new System.Drawing.Point(157, 335);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(64, 13);
             this.label6.TabIndex = 1;
@@ -291,7 +349,7 @@
             // nudImageWidth
             // 
             this.nudImageWidth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.nudImageWidth.Location = new System.Drawing.Point(150, 278);
+            this.nudImageWidth.Location = new System.Drawing.Point(160, 350);
             this.nudImageWidth.Maximum = new decimal(new int[] {
             4000,
             0,
@@ -316,7 +374,7 @@
             this.chbBackgroundTransparent.AutoEllipsis = true;
             this.chbBackgroundTransparent.Checked = true;
             this.chbBackgroundTransparent.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbBackgroundTransparent.Location = new System.Drawing.Point(0, 262);
+            this.chbBackgroundTransparent.Location = new System.Drawing.Point(0, 334);
             this.chbBackgroundTransparent.Name = "chbBackgroundTransparent";
             this.chbBackgroundTransparent.Size = new System.Drawing.Size(138, 17);
             this.chbBackgroundTransparent.TabIndex = 3;
@@ -328,7 +386,7 @@
             this.chbAntiAlias.AutoEllipsis = true;
             this.chbAntiAlias.Checked = true;
             this.chbAntiAlias.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbAntiAlias.Location = new System.Drawing.Point(0, 279);
+            this.chbAntiAlias.Location = new System.Drawing.Point(0, 351);
             this.chbAntiAlias.Name = "chbAntiAlias";
             this.chbAntiAlias.Size = new System.Drawing.Size(138, 17);
             this.chbAntiAlias.TabIndex = 1;
@@ -338,7 +396,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(-3, 43);
+            this.label8.Location = new System.Drawing.Point(-3, 71);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(93, 13);
             this.label8.TabIndex = 6;
@@ -356,7 +414,7 @@
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.Location = new System.Drawing.Point(150, 342);
+            this.btnSave.Location = new System.Drawing.Point(160, 414);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(80, 28);
             this.btnSave.TabIndex = 1;
@@ -367,7 +425,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(127, 142);
+            this.label4.Location = new System.Drawing.Point(127, 170);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 13);
             this.label4.TabIndex = 1;
@@ -375,7 +433,7 @@
             // 
             // nudPadding
             // 
-            this.nudPadding.Location = new System.Drawing.Point(130, 158);
+            this.nudPadding.Location = new System.Drawing.Point(130, 186);
             this.nudPadding.Maximum = new decimal(new int[] {
             25,
             0,
@@ -390,15 +448,49 @@
             0,
             0});
             // 
+            // panel6
+            // 
+            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel6.Controls.Add(this.panShadowColor);
+            this.panel6.Controls.Add(this.label9);
+            this.panel6.Location = new System.Drawing.Point(0, 137);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(251, 23);
+            this.panel6.TabIndex = 5;
+            // 
+            // panShadowColor
+            // 
+            this.panShadowColor.BackColor = System.Drawing.Color.Black;
+            this.panShadowColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panShadowColor.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panShadowColor.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panShadowColor.Location = new System.Drawing.Point(0, 0);
+            this.panShadowColor.Name = "panShadowColor";
+            this.panShadowColor.Size = new System.Drawing.Size(56, 23);
+            this.panShadowColor.TabIndex = 1;
+            this.panShadowColor.Click += new System.EventHandler(this.panBackgroundColor_Click);
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoEllipsis = true;
+            this.label9.Location = new System.Drawing.Point(59, 5);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(189, 13);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Shadow color";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // panel4
             // 
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.Controls.Add(this.panTextColor);
             this.panel4.Controls.Add(this.label3);
-            this.panel4.Location = new System.Drawing.Point(0, 87);
+            this.panel4.Location = new System.Drawing.Point(0, 115);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(241, 23);
+            this.panel4.Size = new System.Drawing.Size(251, 23);
             this.panel4.TabIndex = 5;
             // 
             // panTextColor
@@ -419,7 +511,7 @@
             this.label3.AutoEllipsis = true;
             this.label3.Location = new System.Drawing.Point(59, 5);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(179, 13);
+            this.label3.Size = new System.Drawing.Size(189, 13);
             this.label3.TabIndex = 0;
             this.label3.Text = "Text color";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -427,7 +519,7 @@
             // nudSize
             // 
             this.nudSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.nudSize.Location = new System.Drawing.Point(183, 16);
+            this.nudSize.Location = new System.Drawing.Point(193, 16);
             this.nudSize.Maximum = new decimal(new int[] {
             400,
             0,
@@ -450,7 +542,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(-3, 142);
+            this.label2.Location = new System.Drawing.Point(-3, 170);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 13);
             this.label2.TabIndex = 4;
@@ -458,7 +550,7 @@
             // 
             // tbxMaxChar
             // 
-            this.tbxMaxChar.Location = new System.Drawing.Point(58, 158);
+            this.tbxMaxChar.Location = new System.Drawing.Point(58, 186);
             this.tbxMaxChar.MaxLength = 5;
             this.tbxMaxChar.Name = "tbxMaxChar";
             this.tbxMaxChar.Size = new System.Drawing.Size(55, 20);
@@ -467,7 +559,7 @@
             // 
             // tbxMinChar
             // 
-            this.tbxMinChar.Location = new System.Drawing.Point(0, 158);
+            this.tbxMinChar.Location = new System.Drawing.Point(0, 186);
             this.tbxMinChar.MaxLength = 5;
             this.tbxMinChar.Name = "tbxMinChar";
             this.tbxMinChar.Size = new System.Drawing.Size(55, 20);
@@ -480,9 +572,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.panBackgroundColor);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Location = new System.Drawing.Point(0, 208);
+            this.panel2.Location = new System.Drawing.Point(0, 280);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(241, 23);
+            this.panel2.Size = new System.Drawing.Size(251, 23);
             this.panel2.TabIndex = 2;
             // 
             // panBackgroundColor
@@ -503,7 +595,7 @@
             this.label1.AutoEllipsis = true;
             this.label1.Location = new System.Drawing.Point(59, 5);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(179, 13);
+            this.label1.Size = new System.Drawing.Size(189, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Background color characters";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -516,10 +608,10 @@
             this.panel3.AutoScroll = true;
             this.panel3.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panel3.Controls.Add(this.pbxPreview);
-            this.panel3.Location = new System.Drawing.Point(259, 1);
+            this.panel3.Location = new System.Drawing.Point(269, 1);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(514, 549);
+            this.panel3.Size = new System.Drawing.Size(536, 600);
             this.panel3.TabIndex = 1;
             // 
             // pbxPreview
@@ -532,55 +624,21 @@
             this.pbxPreview.TabIndex = 0;
             this.pbxPreview.TabStop = false;
             // 
-            // panel6
+            // chbItalic
             // 
-            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel6.Controls.Add(this.panShadowColor);
-            this.panel6.Controls.Add(this.label9);
-            this.panel6.Location = new System.Drawing.Point(0, 109);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(241, 23);
-            this.panel6.TabIndex = 5;
-            // 
-            // panShadowColor
-            // 
-            this.panShadowColor.BackColor = System.Drawing.Color.Black;
-            this.panShadowColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panShadowColor.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panShadowColor.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panShadowColor.Location = new System.Drawing.Point(0, 0);
-            this.panShadowColor.Name = "panShadowColor";
-            this.panShadowColor.Size = new System.Drawing.Size(56, 23);
-            this.panShadowColor.TabIndex = 1;
-            this.panShadowColor.Click += new System.EventHandler(this.panBackgroundColor_Click);
-            // 
-            // label9
-            // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label9.AutoEllipsis = true;
-            this.label9.Location = new System.Drawing.Point(59, 5);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(179, 13);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Shadow color";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // chbShadow
-            // 
-            this.chbShadow.AutoSize = true;
-            this.chbShadow.Location = new System.Drawing.Point(0, 296);
-            this.chbShadow.Name = "chbShadow";
-            this.chbShadow.Size = new System.Drawing.Size(65, 17);
-            this.chbShadow.TabIndex = 1;
-            this.chbShadow.Text = "Shadow";
-            this.chbShadow.UseVisualStyleBackColor = true;
+            this.chbItalic.AutoSize = true;
+            this.chbItalic.Location = new System.Drawing.Point(53, 39);
+            this.chbItalic.Name = "chbItalic";
+            this.chbItalic.Size = new System.Drawing.Size(48, 17);
+            this.chbItalic.TabIndex = 1;
+            this.chbItalic.Text = "Italic";
+            this.chbItalic.UseVisualStyleBackColor = true;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(816, 612);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(640, 480);
@@ -592,17 +650,18 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudOutline)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWhitespacePercent)).EndInit();
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.nudImageWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPadding)).EndInit();
+            this.panel6.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.nudSize)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPreview)).EndInit();
-            this.panel6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -647,6 +706,10 @@
         private System.Windows.Forms.Panel panShadowColor;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.CheckBox chbShadow;
+        private System.Windows.Forms.CheckBox chbOutline;
+        private System.Windows.Forms.NumericUpDown nudOutline;
+        private System.Windows.Forms.CheckBox chbBold;
+        private System.Windows.Forms.CheckBox chbItalic;
     }
 }
 

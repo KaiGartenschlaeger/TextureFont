@@ -60,6 +60,8 @@ namespace TextureFontGenerator
             cbxWhitespaceMode.SelectedIndex = 0;
             nudWhitespacePercent.Enabled = cbxWhitespaceMode.SelectedIndex > 0;
 
+            nudOutline.Enabled = chbOutline.Checked;
+
             RefreshSaveElement();
         }
 
@@ -70,6 +72,11 @@ namespace TextureFontGenerator
         private void cbxWhitespaceMode_SelectedIndexChanged(object sender, EventArgs e)
         {
             nudWhitespacePercent.Enabled = cbxWhitespaceMode.SelectedIndex > 0;
+        }
+
+        private void chbOutline_CheckedChanged(object sender, EventArgs e)
+        {
+            nudOutline.Enabled = chbOutline.Checked;
         }
 
         private void ConfigureGraphics(Graphics graphics)
@@ -136,55 +143,101 @@ namespace TextureFontGenerator
         {
             string text = ch.ToString();
 
-            SizeF size;
-            if (ch == ' ')
+            if (chbOutline.Checked && ch != ' ')
             {
-                size = CalculateWhitespaceSize(font, minChar, maxChar);
+                var size = _graphics.MeasureString(text, font);
+                var width = (int)Math.Ceiling(size.Width + 20);
+                var height = (int)Math.Ceiling(size.Height);
+
+                var sf = new StringFormat();
+                sf.Alignment = StringAlignment.Center;
+                sf.LineAlignment = StringAlignment.Center;
+
+                var bitmap = new Bitmap(width, height, format);
+
+                using (var brushBg = new SolidBrush(panTextColor.BackColor))
+                using (var penFg = new Pen(panShadowColor.BackColor, (float)nudOutline.Value))
+                using (var graphics = Graphics.FromImage(bitmap))
+                {
+                    //graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                    //graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
+                    //graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                    //graphics.PixelOffsetMode = PixelOffsetMode.Default;
+
+                    sf.Alignment = StringAlignment.Near;
+                    sf.FormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.FitBlackBox | StringFormatFlags.NoFontFallback | StringFormatFlags.NoClip;
+                    sf.HotkeyPrefix = HotkeyPrefix.None;
+                    sf.Trimming = StringTrimming.None;
+
+                    graphics.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
+                    graphics.SmoothingMode = SmoothingMode.HighQuality;
+                    graphics.PixelOffsetMode = PixelOffsetMode.Half;
+                    graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+
+                    using (var path = new GraphicsPath())
+                    {
+                        path.AddString(ch.ToString(),
+                            font.FontFamily,
+                            (int)font.Style,
+                            font.Size,
+                            new Rectangle(
+                                0,
+                                0,
+                                (int)size.Width,
+                                (int)size.Height),
+                            sf);
+
+                        graphics.FillPath(brushBg, path);
+                        graphics.DrawPath(penFg, path);
+                    }
+                }
+
+                return CropChar(bitmap);
             }
             else
             {
-                size = _graphics.MeasureString(text, font);
-            }
-
-            int width = (int)Math.Ceiling(size.Width);
-            int height = (int)Math.Ceiling(size.Height);
-
-            Bitmap bitmap = new Bitmap(width, height, format);
-            using (Graphics graphics = Graphics.FromImage(bitmap))
-            {
-                if (chbAntiAlias.Checked)
-                {
-                    graphics.TextRenderingHint = TextRenderingHint.AntiAliasGridFit;
-                }
+                SizeF size;
+                if (ch == ' ')
+                    size = CalculateWhitespaceSize(font, minChar, maxChar);
                 else
-                {
-                    graphics.TextRenderingHint = TextRenderingHint.SingleBitPerPixelGridFit;
-                }
+                    size = _graphics.MeasureString(text, font);
 
-                graphics.Clear(Color.Transparent);
-                using (StringFormat sf = new StringFormat())
-                {
-                    sf.Alignment = StringAlignment.Near;
-                    sf.LineAlignment = StringAlignment.Near;
+                int width = (int)Math.Ceiling(size.Width);
+                int height = (int)Math.Ceiling(size.Height);
 
-                    if (drawShadow)
+                var bitmap = new Bitmap(width, height, format);
+                using (var graphics = Graphics.FromImage(bitmap))
+                {
+                    if (chbAntiAlias.Checked)
                     {
-                        graphics.DrawString(text, font, brushShadow, 1, 1, sf);
+                        graphics.TextRenderingHint = TextRenderingHint.AntiAliasGridFit;
+                    }
+                    else
+                    {
+                        graphics.TextRenderingHint = TextRenderingHint.SingleBitPerPixelGridFit;
                     }
 
-                    graphics.DrawString(text, font, brushText, 0, 0, sf);
+                    graphics.Clear(Color.Transparent);
+                    using (var sf = new StringFormat())
+                    {
+                        sf.Alignment = StringAlignment.Near;
+                        sf.LineAlignment = StringAlignment.Near;
+
+                        if (drawShadow)
+                        {
+                            graphics.DrawString(text, font, brushShadow, 1, 1, sf);
+                        }
+
+                        graphics.DrawString(text, font, brushText, 0, 0, sf);
+                    }
+
+                    graphics.Flush();
                 }
 
-                graphics.Flush();
-            }
-
-            if (ch == ' ')
-            {
-                return bitmap;
-            }
-            else
-            {
-                return CropChar(bitmap);
+                if (ch == ' ')
+                    return bitmap;
+                else
+                    return CropChar(bitmap);
             }
         }
 
@@ -196,21 +249,18 @@ namespace TextureFontGenerator
                 int cropRight = bitmap.Width - 1;
 
                 while ((cropLeft < cropRight) && (IsEmpty(bitmap, cropLeft)))
-                {
                     cropLeft++;
-                }
+
                 while ((cropRight > cropLeft) && (IsEmpty(bitmap, cropRight)))
-                {
                     cropRight--;
-                }
 
                 cropLeft = Math.Max(cropLeft - 1, 0);
                 cropRight = Math.Min(cropRight + 1, bitmap.Width - 1);
 
                 int width = cropRight - cropLeft + 1;
 
-                Bitmap croppedBitmap = new Bitmap(width, bitmap.Height, bitmap.PixelFormat);
-                using (Graphics graphics = Graphics.FromImage(croppedBitmap))
+                var croppedBitmap = new Bitmap(width, bitmap.Height, bitmap.PixelFormat);
+                using (var graphics = Graphics.FromImage(croppedBitmap))
                 {
                     graphics.CompositingMode = CompositingMode.SourceCopy;
 
@@ -247,18 +297,25 @@ namespace TextureFontGenerator
             try
             {
                 // load font
+                FontStyle style = FontStyle.Regular;
+
+                if (chbBold.Checked)
+                    style |= FontStyle.Bold;
+                if (chbItalic.Checked)
+                    style |= FontStyle.Italic;
+
                 Font font = null;
                 try
                 {
                     font = new Font(
                         cbxFont.SelectedItem.ToString(),
                         (int)nudSize.Value,
-                        FontStyle.Regular,
+                        style,
                         GraphicsUnit.Pixel);
                 }
                 catch (ArgumentException)
                 {
-                    MessageBox.Show("Not supported font", "Error",
+                    MessageBox.Show("Unsupported font", "Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     return null;
@@ -271,23 +328,23 @@ namespace TextureFontGenerator
                 int canvasWidth = (int)nudImageWidth.Value;
 
                 // find image format
-                PixelFormat format = PixelFormat.Format32bppArgb;
+                var format = PixelFormat.Format32bppArgb;
                 if (chbPremultipliedAlpha.Checked)
                 {
                     format = PixelFormat.Format32bppPArgb;
                 }
 
                 // create text and background brush
-                SolidBrush brushText = new SolidBrush(panTextColor.BackColor);
-                SolidBrush brushShadow = new SolidBrush(panShadowColor.BackColor);
-                SolidBrush brushBg = new SolidBrush(panBackgroundColor.BackColor);
+                var brushText = new SolidBrush(panTextColor.BackColor);
+                var brushShadow = new SolidBrush(panShadowColor.BackColor);
+                var brushBg = new SolidBrush(panBackgroundColor.BackColor);
 
                 // create one bitmap for each character
-                List<Bitmap> chars = new List<Bitmap>();
-                int linesCount = 1;
-                int lineHeight = 0;
+                var chars = new List<Bitmap>();
+                var linesCount = 1;
+                var lineHeight = 0;
 
-                int width = 0;
+                var width = 0;
                 for (char ch = (char)minChar; ch <= (char)maxChar; ch++)
                 {
                     Bitmap chBitmap = RasterizeChar(ch,
@@ -313,9 +370,9 @@ namespace TextureFontGenerator
                 }
 
                 // create bitmap for the whole texture
-                Rectangle[] charPositions = new Rectangle[chars.Count];
+                var charPositions = new Rectangle[chars.Count];
 
-                Bitmap bitmap = new Bitmap(
+                var bitmap = new Bitmap(
                     canvasWidth,
                     (linesCount * lineHeight) + ((linesCount + 1) * padding), format);
 
@@ -495,10 +552,10 @@ namespace TextureFontGenerator
                         writer.WriteStartElement("Texture");
                         writer.WriteElementString("Width", _fontTexture.Texture.Width.ToString());
                         writer.WriteElementString("Height", _fontTexture.Texture.Height.ToString());
-                        writer.WriteElementString("Compressed", chbCompressImage.Checked.ToString());
+                        writer.WriteElementString("IsCompressed", chbCompressImage.Checked.ToString());
 
                         byte[] imageData = null;
-                        using (MemoryStream mem = new MemoryStream())
+                        using (var mem = new MemoryStream())
                         {
                             _fontTexture.Texture.Save(mem, ImageFormat.Png);
                             imageData = mem.ToArray();
@@ -509,7 +566,7 @@ namespace TextureFontGenerator
                             imageData = CompressHelper.GZIPCompress(imageData);
                         }
 
-                        string image = EncodingHelper.EncodeBase64(imageData, null);
+                        var image = EncodingHelper.EncodeBase64(imageData, null);
 
                         writer.WriteElementString("Data", image);
                         writer.WriteEndElement();
@@ -530,6 +587,7 @@ namespace TextureFontGenerator
                     writer.WriteAttributeString("A", ((int)_fontTexture.FirstChar).ToString());
                     writer.WriteEndElement();
 
+                    writer.WriteStartElement("Chars");
                     for (int i = 0; i < _fontTexture.Positions.Length; i++)
                     {
                         writer.WriteStartElement("Char");
@@ -539,6 +597,7 @@ namespace TextureFontGenerator
                         writer.WriteAttributeString("H", _fontTexture.Positions[i].Height.ToString());
                         writer.WriteEndElement();
                     }
+                    writer.WriteEndElement();
 
                     writer.WriteEndElement(); // characters
                     writer.WriteEndElement(); // texture font
